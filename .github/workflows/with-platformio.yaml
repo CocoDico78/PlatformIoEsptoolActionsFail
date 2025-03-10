@@ -19,10 +19,7 @@ jobs:
         with:
           python-version: '3.12'
 
-      - run: |
-         wget -O get-platformio.py https://raw.githubusercontent.com/platformio/platformio-core-installer/master/get-platformio.py
-         python3 get-platformio.py
-         ~/.platformio/penv/bin/pip install intelhex
+      - run: python3 -m pip install -U platformio
 
       - name: Build firmware
-        run: ~/.platformio/penv/bin/pio pkg exec --package "platformio/tool-esptoolpy" -- esptool.py version
+        run: pio pkg exec --package "platformio/tool-esptoolpy@~1.40501.0" -- esptool.py version
